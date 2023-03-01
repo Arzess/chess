@@ -220,9 +220,18 @@ function placePieces(){
         }
     }
 }
+function clearPieces(){
+  const chessCell = document.querySelectorAll('.chess-cell')
+  chessCell.forEach(cell => {
+    cell.innerHTML = "";
+  })
+}
+// Audio files
+// pieceMove.mp3
+let pieceMove = new Audio('./audio/pieceMove.mp3');
+
 function play(){
   placePieces();
-
   const pieces = document.querySelectorAll('.piece');
   const chessCell = document.querySelectorAll('.chess-cell');
   // This algrorithm sets wheteher the piece is draggged or not
@@ -253,8 +262,8 @@ function play(){
         cell.removeChild(cell.childNodes[0]);
       }
         const selected = document.querySelectorAll('.selected')[0];
-        const selectedCell = document.querySelectorAll('.selectedCell')
         cell.appendChild(selected);
+        pieceMove.play();
     })
   })
 
